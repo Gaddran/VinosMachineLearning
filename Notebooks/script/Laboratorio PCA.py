@@ -56,12 +56,13 @@ plt.plot(range(1, len(explained_variance_ratio) + 1), explained_variance_ratio.c
 plt.title('Varianza explicada acumulativa')
 plt.xlabel('Número de componentes principales')
 plt.ylabel('Varianza explicada acumulativa')
+plt.axvline(x=7, ls="--", color='r')
 plt.show()
 
 
 # # Hasta aca llegue
 
-n_components = 10
+n_components = 7
 pca = PCA(n_components=n_components)
 principal_components = pca.fit_transform(X)
 
@@ -69,13 +70,16 @@ principal_components = pca.fit_transform(X)
 pc_df=pd.DataFrame(principal_components, columns=[f'PC{i}' for i in range(1, n_components + 1)])
 
 
-pca.explained_variance_ratio_[0:9].sum()
+pca.explained_variance_ratio_[0:(n_components-1)].sum()
 
 
 # Visualización de componentes principales en pares
 sns.pairplot(pc_df, diag_kind='kde')  # 'diag_kind' permite mostrar histogramas de densidad en la diagonal principal
 plt.show()
 
+
+# # Hasta aca llegue
+# ----
 
 # # Importancia de las variables en cada componente
 # La elección del número de variables que debemos retener de los componentes principales depende de los objetivos de análisis y de la cantidad de información que estés dispuesto a perder en el proceso de reducción de dimensionalidad.
@@ -84,7 +88,7 @@ plt.show()
 import pandas as pd
 
 # Crear un DataFrame con las cargas de cada variable en cada componente principal
-loadings = pd.DataFrame(pca.components_.T, columns=[f'PC{i}' for i in range(1, n_components + 1)], index=cancer.columns)
+loadings = pd.DataFrame(pca.components_.T, columns=[f'PC{i}' for i in range(1, n_components + 1)], index=vinos.columns)
 
 #Importancia de las variables
 loadings_abs = loadings.abs()
