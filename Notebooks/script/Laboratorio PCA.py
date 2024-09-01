@@ -146,10 +146,10 @@ from sklearn.naive_bayes import GaussianNB
 model = GaussianNB()
 
 
-cancer_type= load_breast_cancer().target
+vinos_type= load_wine().target
 
 
-X_train, X_test, y_train, y_test = train_test_split(pc_df, cancer_type, train_size = 0.7, random_state=1234)
+X_train, X_test, y_train, y_test = train_test_split(pc_df, vinos_type, train_size = 0.7, random_state=1234)
 
 
 model.fit(X_train,y_train)
@@ -161,7 +161,7 @@ labels = model.predict(X_test)
 from sklearn.metrics import confusion_matrix
 mat = confusion_matrix(y_test, labels)
 sns.heatmap(mat.T, square=True, annot=True, fmt='d', cbar=False,
-            xticklabels=load_breast_cancer().target_names, yticklabels=load_breast_cancer().target_names)
+            xticklabels=load_wine().target_names, yticklabels=load_wine().target_names)
 plt.xlabel('true label')
 plt.ylabel('predicted label');
 
@@ -169,8 +169,8 @@ plt.ylabel('predicted label');
 from sklearn.metrics import precision_score, recall_score,f1_score,accuracy_score
 
 
-print(f'precision: {precision_score(labels,y_test)}')
-print(f'recall: {recall_score(labels,y_test)}')
+print(f'precision: {precision_score(labels,y_test, average="weighted")}')
+print(f'recall: {recall_score(labels,y_test, average="weighted")}')
 print(f'accuracy: {accuracy_score(labels,y_test)}')
-print(f'f1 score: {f1_score(labels,y_test)}')
+print(f'f1 score: {f1_score(labels,y_test, average="weighted")}')
 
