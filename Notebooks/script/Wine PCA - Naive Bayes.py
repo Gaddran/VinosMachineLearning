@@ -17,12 +17,12 @@
 # 
 # </div>
 # 
-# # Machine Learning: Laboratorio 01
+# # Machine Learning
 # *07 de Septiembre de 2024*
 # 
 # **Nombre Estudiante(s)**: `Gabriel Álvarez - Jaime Castillo - Kurt Castro - Giuseppe Lavarello`  
 
-# #### Laboratorio 1 - Machine Learning
+# #### Laboratorio 1
 # 
 # **Objetivo**: En este laboratorio deberá investigar del uso de la librería python scikit-learn y sus funciones más útiles. Su
 # meta es realizar un análisis de datos, PCA y posterior clasficador utilizando el algoritmo Naive Bayes.
